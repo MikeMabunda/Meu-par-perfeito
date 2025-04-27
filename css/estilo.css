@@ -102,3 +102,45 @@ footer {
 .btn-conversar:hover {
   background-color: #c4004f;
 }
+.chat-container {
+  max-width: 600px;
+  margin: 50px auto;
+  background: #ffe6f0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(230, 0, 92, 0.2);
+}
+
+.chat-box {
+  height: 300px;
+  overflow-y: auto;
+  background: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.chat-input {
+  display: flex;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px 0 0 8px;
+  border: 1px solid #ccc;
+}
+
+.chat-input button {
+  padding: 10px 20px;
+  background-color: #e6005c;
+  color: white;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  background-color: #c4004f;
+}
