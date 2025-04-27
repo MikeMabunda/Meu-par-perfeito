@@ -28,24 +28,30 @@
     <p>&copy; 2025 MeuPar Perfeito. Todos os direitos reservados.</p>
   </footer>
 
-  <script>
-    const socket = new WebSocket("ws://localhost:8080/chat");
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.6.0/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
 
-    socket.onmessage = function(event) {
+<script>
+  var socket = new SockJS('http://localhost:8080/chat');
+  var stompClient = Stomp.over(socket);
+
+  stompClient.connect({}, function(frame) {
+    stompClient.subscribe('/topic/mensagens', function(messageOutput) {
       const chat = document.getElementById("chat");
       const novaMensagem = document.createElement("div");
-      novaMensagem.textContent = event.data;
+      novaMensagem.textContent = JSON.parse(messageOutput.body).mensagem;
       chat.appendChild(novaMensagem);
       chat.scrollTop = chat.scrollHeight;
-    };
+    });
+  });
 
-    function enviarMensagem() {
-      const input = document.getElementById("mensagem");
-      if (input.value.trim() !== "") {
-        socket.send(input.value);
-        input.value = "";
-      }
+  function enviarMensagem() {
+    const input = document.getElementById("mensagem");
+    if (input.value.trim() !== "") {
+      stompClient.send("/app/enviar", {}, input.value);
+      input.value = "";
     }
-  </script>
+  }
+</script>
 </body>
 </html>
