@@ -44,3 +44,28 @@ footer {
   bottom: 0;
   width: 100%;
 }
+.formulario {
+  max-width: 400px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario input, .formulario select, .formulario button {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.formulario button {
+  background-color: #e6005c;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.formulario button:hover {
+  background-color: #c4004f;
+}
