@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversa - MeuPar Perfeito</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <header>
+    <img src="imagens/logo.png" alt="MeuPar Perfeito" class="logo">
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="perfil.html">Perfil</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="chat-container">
+      <div id="chat" class="chat-box"></div>
+      <div class="chat-input">
+        <input type="text" id="mensagem" placeholder="Digite sua mensagem..." autocomplete="off">
+        <button onclick="enviarMensagem()">Enviar</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MeuPar Perfeito. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const socket = new WebSocket("ws://localhost:8080/chat");
+
+    socket.onmessage = function(event) {
+      const chat = document.getElementById("chat");
+      const novaMensagem = document.createElement("div");
+      novaMensagem.textContent = event.data;
+      chat.appendChild(novaMensagem);
+      chat.scrollTop = chat.scrollHeight;
+    };
+
+    function enviarMensagem() {
+      const input = document.getElementById("mensagem");
+      if (input.value.trim() !== "") {
+        socket.send(input.value);
+        input.value = "";
+      }
+    }
+  </script>
+</body>
+</html>
