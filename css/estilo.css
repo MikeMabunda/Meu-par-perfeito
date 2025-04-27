@@ -69,3 +69,36 @@ footer {
 .formulario button:hover {
   background-color: #c4004f;
 }
+.perfil {
+  max-width: 500px;
+  margin: 50px auto;
+  text-align: center;
+  background-color: #ffe6f0;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px rgba(230, 0, 92, 0.2);
+}
+
+.foto-perfil {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #e6005c;
+  margin-bottom: 20px;
+}
+
+.btn-conversar {
+  background-color: #e6005c;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.btn-conversar:hover {
+  background-color: #c4004f;
+}
